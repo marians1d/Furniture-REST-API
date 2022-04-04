@@ -6,10 +6,10 @@ const { orderController, commentController } = require('../controllers');
 // middleware that is specific to this router
 
 router.get('/', orderController.getOrders);
-router.comment('/', auth(), orderController.createOrder);
+router.post('/', auth(), orderController.createOrder);
 
 router.get('/:orderId', orderController.getOrder);
-router.comment('/:orderId', auth(), commentController.createComment);
+router.post('/:orderId', auth(), commentController.createComment);
 router.put('/:orderId', auth(), orderController.subscribe);
 router.put('/:orderId/comments/:commentId', auth(), commentController.editComment);
 router.delete('/:orderId/comments/:commentId', auth(), commentController.deleteComment);

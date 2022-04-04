@@ -6,9 +6,9 @@ const likes = require('./likes');
 const test = require('./test');
 const { authController } = require('../controllers');
 
-router.comment('/register', authController.register);
-router.comment('/login', authController.login);
-router.comment('/logout', authController.logout);
+router.post('/register', authController.register);
+router.post('/login', authController.login);
+router.post('/logout', authController.logout);
 
 router.use('/users', users);
 router.use('/orders', orders);
