@@ -70,22 +70,10 @@ function deleteComment(req, res, next) {
         .catch(next);
 }
 
-function like(req, res, next) {
-    const { commentId } = req.params;
-    const { _id: userId } = req.user;
-
-    console.log('like');
-
-    commentModel.updateOne({ _id: commentId }, { $addToSet: { likes: userId } }, { new: true })
-        .then(() => res.status(200).json({ message: 'Liked successful!' }))
-        .catch(next);
-}
-
 module.exports = {
     getLatestsComments,
     newComment,
     createComment,
     editComment,
-    deleteComment,
-    like,
+    deleteComment
 };
