@@ -6,8 +6,26 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // TODO: decide on subscribers
-    subscribers: [{
+    deliveryDate: {
+        type: Date
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    visibility: {
+        type: String,
+        enum: [
+            'Private',
+            'Public'
+        ],
+        required: true
+    },
+    providers: [{
         type: ObjectId,
         ref: 'User'
     }],
