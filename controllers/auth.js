@@ -13,7 +13,7 @@ const removePassword = (data) => {
 };
 
 function register(req, res, next) {
-    const { tel, email, username, password, repeatPassword } = req.body;
+    const { tel, email, username, password } = req.body;
 
     return userModel.create({ tel, email, username, password })
         .then((createdUser) => {
@@ -88,6 +88,7 @@ function getProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
 
     userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
+        .populate('orders')
         .then(user => { res.status(200).json(user); })
         .catch(next);
 }
