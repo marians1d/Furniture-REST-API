@@ -34,7 +34,7 @@ function createOrder(req, res, next) {
     const { orderName, description, address } = req.body;
     const { _id: userId } = req.user;
 
-    orderModel.create({ orderName, description, address, userId, providers: [userId] })
+    orderModel.create({ orderName, description, address, userId, providers: [] })
         .then(order => res.status(200).json(order))
         .catch(next);
 }
