@@ -39,10 +39,10 @@ function createOrder(req, res, next) {
         .catch(next);
 }
 
-function subscribe(req, res, next) {
+function provide(req, res, next) {
     const orderId = req.params.orderId;
     const { _id: userId } = req.user;
-    orderModel.findByIdAndUpdate({ _id: orderId }, { $addToSet: { subscribers: userId } }, { new: true })
+    orderModel.findByIdAndUpdate({ _id: orderId }, { $addToSet: { providers: userId } }, { new: true })
         .then(updatedOrder => {
             res.status(200).json(updatedOrder);
         })
@@ -81,7 +81,7 @@ module.exports = {
     getOrders,
     createOrder,
     getOrder,
-    subscribe,
+    provide,
     updateOrder,
     deleteOrder
 };
