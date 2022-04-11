@@ -6,5 +6,6 @@ const { auth } = require('../utils');
 router.get('/profile', auth(), authController.getProfileInfo);
 // TODO: add provider status request
 router.put('/profile', auth(), authController.editProfileInfo);
+router.put('/profile/status', auth(), authController.editProfileStatus);
 
 module.exports = router;

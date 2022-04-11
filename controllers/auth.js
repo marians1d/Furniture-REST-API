@@ -102,10 +102,20 @@ function editProfileInfo(req, res, next) {
         .catch(next);
 }
 
+function editProfileStatus(req, res, next) {
+    const { _id: userId } = req.user;
+    const status = 'provider';
+
+    userModel.findOneAndUpdate({ _id: userId }, { status }, { runValidators: true, new: true })
+        .then(x => { res.status(200).json(x); })
+        .catch(next);
+}
+
 module.exports = {
     login,
     register,
     logout,
     getProfileInfo,
     editProfileInfo,
+    editProfileStatus
 };
