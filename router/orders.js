@@ -9,7 +9,7 @@ router.post('/', auth(), orderController.createOrder);
 
 router.get('/:orderId', orderController.getOrder);
 router.post('/:orderId', auth(), commentController.createComment);
-router.put('/:orderId', auth(), orderController.subscribe);
+router.put('/:orderId', auth(), orderController.provide);
 router.put('/:orderId/edit', auth(), orderController.updateOrder);
 router.delete('/:orderId', auth(), orderController.deleteOrder);
 router.put('/:orderId/comments/:commentId', auth(), commentController.editComment);

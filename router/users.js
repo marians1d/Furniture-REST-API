@@ -3,8 +3,8 @@ const router = express.Router();
 const { authController } = require('../controllers');
 const { auth } = require('../utils');
 
-router.get('/profile', auth(),authController.getProfileInfo);
+router.get('/profile', auth(), authController.getProfileInfo);
 // TODO: add provider status request
-router.put('/profile', auth(),authController.editProfileInfo);
+router.put('/profile', auth(), authController.editProfileInfo);
 
 module.exports = router;
